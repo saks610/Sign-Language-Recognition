@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Language Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a5acd, #00c9ff);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 3px solid white;
+        }
+
+        #startBtn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            background: #00ffea;
+            color: black;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #startBtn:hover {
+            background: #00c3b6;
+        }
+
+        #prediction {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🤟 Sign Language Recognition</h1>
+
+    <video id="video" autoplay></video>
+
+    <button id="startBtn">Start Recognition</button>
+
+    <div id="prediction">Prediction: ---</div>
+</div>
+
+<script>
+    const video = document.getElementById("video");
+
+    // Access Webcam
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(error => {
+            alert("Camera access denied!");
+        });
+
+    // Button Action (We will add AI Model next step)
+    document.getElementById("startBtn").addEventListener("click", () => {
+        document.getElementById("prediction").innerText = "Prediction: Processing...";
+        
+        // Placeholder (next step we connect model)
+        setTimeout(() => {
+            document.getElementById("prediction").innerText = "Prediction: ✌️ (Example)";
+        }, 2000);
+    });
+</script>
+
+</body>
+</html>
